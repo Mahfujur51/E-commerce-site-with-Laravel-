@@ -21,3 +21,7 @@ Route::get('/post/{id}','PublicController@singlePost')->name('post');
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::prefix('admin')->group(function(){
+ Route::get('/dashboard','DashboardController@dashboard')->name('admin.dashboard');
+
+});
