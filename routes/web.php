@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,16 +10,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/','PublicController@index')->name('index');
 Route::get('/contact','PublicController@contact')->name('contact');
 Route::get('/about','PublicController@about')->name('about');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');
 Auth::routes();
-
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::prefix('admin')->group(function(){
- Route::get('/dashboard','DashboardController@dashboard')->name('admin.dashboard');
-
+Route::get('/dashboard','DashboardController@dashboard')->name('admin.dashboard');
 });
