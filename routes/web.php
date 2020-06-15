@@ -20,4 +20,4 @@ Route::get('/about','PublicController@about')->name('about');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
