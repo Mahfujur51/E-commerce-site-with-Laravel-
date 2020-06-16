@@ -12,4 +12,14 @@ class UserController extends Controller
     public function comment(){
 
     }
+    public function profile(){
+        return view('user.profile');
+    }
+    public function update(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+        ]);
+
+    }
 }

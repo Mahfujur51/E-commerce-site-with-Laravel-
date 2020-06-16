@@ -30,4 +30,6 @@ Route::prefix('author')->group(function(){
 Route::prefix('user')->group(function(){
     Route::get('/dashboard','UserController@dashboard')->name('user.dashboard');
     Route::get('/comment','UserController@comment')->name('user.comment');
+     Route::get('/profile','UserController@profile')->name('user.profile');
+     Route::post('/profile/update','UserController@update')->name('user.profile.update');
 });
