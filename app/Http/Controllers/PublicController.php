@@ -19,6 +19,7 @@ class PublicController extends Controller
         return view('about');
     }
     public function singlePost($id){
-        return view('post');
+        $post=Post::find($id);
+        return view('post',compact('post'));
     }
 }
