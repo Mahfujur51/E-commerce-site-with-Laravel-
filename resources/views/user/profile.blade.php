@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title','Profile update')
 @section('content')
 <div class="card">
     <div class="card-header">Accoutn Settings</div>
