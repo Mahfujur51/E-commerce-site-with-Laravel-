@@ -32,4 +32,5 @@ Route::prefix('user')->group(function(){
     Route::get('/comment','UserController@comment')->name('user.comment');
      Route::get('/profile','UserController@profile')->name('user.profile');
      Route::post('/profile/update','UserController@update')->name('user.profile.update');
+     Route::get('/comment/delete/{id}','UserController@delete')->name('user.comment.delete');
 });
