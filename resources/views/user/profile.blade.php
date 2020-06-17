@@ -31,29 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel">
-                    <h2>Password</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-gorup">
-                            <label for="">Password</label>
-                            <input type="password" name="password"class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-gorup">
-                            <label for="">Password</label>
-                            <input type="password" name="password"class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-gorup">
-                            <label for="">Password</label>
-                            <input type="password" name="password"class="form-control">
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-4 mt-4 mb-4">
                         <input type="submit" class="btn btn-success">

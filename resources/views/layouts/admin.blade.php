@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('backend/vendor/simple-line-icons/css/simple-line-icons.css')}}">
     <link rel="stylesheet" href="{{asset('backend/vendor/font-awesome/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -30,5 +31,17 @@
 <script src="{{asset('backend/vendor/chart.js/chart.min.js')}}"></script>
 <script src="{{asset('backend/js/carbon.js')}}"></script>
 <script src="{{asset('backend/js/demo.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script>
+    @if (Session::has('success'))
+    toastr.success("{{Session::get('success')}}")
+    {{-- expr --}}
+    @endif
+    @if (Session::has('info'))
+    toastr.info("{{Session::get('info')}}")
+    {{-- expr --}}
+    @endif
+
+</script>
 </body>
 </html>

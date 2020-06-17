@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -20,6 +22,13 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'email|required',
         ]);
+        $user =Auth::user();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->update();
+        Session::flash('success','Profile Updated Successfully!!');
+        return redirect()->back();
+
 
     }
 }

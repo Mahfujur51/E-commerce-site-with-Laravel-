@@ -1,20 +1,20 @@
 <nav class="sidebar-nav">
     <ul class="nav">
-        @if (Auth::user()->admin && Auth::user()->author==false)
+        @if (Auth::user()->admin==false && Auth::user()->author==false)
         {{-- expr --}}
         <li class="nav-title">User</li>
         <li class="nav-item">
-            <a href="{{ route('user.dashboard') }}" class="nav-link active">
+            <a href="{{ route('user.dashboard') }}" class="nav-link {{Route::currentRouteName()=='user.dashboard'?'active' : ''}}">
                 <i class="icon icon-speedometer"></i> Dashboard
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('user.comment') }}" class="nav-link ">
+            <a href="{{ route('user.comment') }}" class="nav-link {{Route::currentRouteName()=='user.comment'?'active' : ''}} ">
                 <i class="icon icon-book-open"></i> Comments
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('user.profile') }}" class="nav-link ">
+            <a href="{{ route('user.profile') }}" class="nav-link {{Route::currentRouteName()=='user.profile'?'active' : ''}}">
                 <i class="fa fa-user"></i> Profile
             </a>
         </li>
@@ -42,22 +42,22 @@
         {{-- expr --}}
         <li class="nav-title">Admin</li>
         <li class="nav-item  nav-dropdown">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                 <i class="icon icon-speedometer"></i> Dashboard
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.post') }}" class="nav-link">
                 <i class="icon icon-paper-clip"></i> Posts
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.comment') }}" class="nav-link">
                 <i class="icon icon-umbrella"></i> Comment
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.user') }}" class="nav-link">
                 <i class="icon icon-user"></i> User
             </a>
         </li>
