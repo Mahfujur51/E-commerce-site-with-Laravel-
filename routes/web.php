@@ -26,6 +26,8 @@ Route::prefix('author')->group(function(){
     Route::get('/dashboard','AuthorController@dashboard')->name('author.dashboard');
     Route::get('/comment','AuthorController@comment')->name('author.comment');
     Route::get('/post','AuthorController@post')->name('author.post');
+    Route::get('/create/post','AuthorController@create')->name('author.create.post');
+    Route::get('/store/post','AuthorController@store')->name('author.store.post');
 });
 Route::prefix('user')->group(function(){
     Route::get('/dashboard','UserController@dashboard')->name('user.dashboard');

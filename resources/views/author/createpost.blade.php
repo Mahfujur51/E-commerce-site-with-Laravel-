@@ -1,0 +1,34 @@
+@extends('layouts.admin')
+@section('title','Create Post')
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-header bg-light">
+                Create post
+            </div>
+            <div class="card-body">
+                <form action="{{ route('author.store.post') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Post Title:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Post Content:</label>
+                         <textarea name="content" class="form-control" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-gorup">
+                        <div class="text-center">
+                        <input type="submit" class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+@endsection

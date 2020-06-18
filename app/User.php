@@ -42,4 +42,11 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany('App\Comment');
     }
+    public function postsToday(){
+        return $this->hasMany('App\Post')->Where('created_at','>=','Carbon::today()');
+    }
+     public function commetsToday(){
+        return $this->hasMany('App\Comment')->Where('created_at','>=','Carbon::today()');
+    }
+
 }
