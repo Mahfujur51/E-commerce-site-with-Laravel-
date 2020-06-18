@@ -47,4 +47,19 @@ class AuthorController extends Controller
 
 
     }
+    public function delete($id){
+       $post=Post::Where('id',$id)->Where('user_id',Auth::id())->first();
+       if ($post) {
+        $post->delete();
+        Session::flash('success','Post Deleted Successfully!!');
+        return redirect()->back();
+       }else{
+        Session::flash('info','Nothing to Deleted!!');
+        return redirect()->back();
+       }
+    }
+    public function edit($id){
+         $posts=Post::Where('id',$id)->Where('user_id',Auth::id())->first();
+         return view('author.update',compact('posts'));
+    }
 }

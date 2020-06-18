@@ -28,6 +28,8 @@ Route::prefix('author')->group(function(){
     Route::get('/post','AuthorController@post')->name('author.post');
     Route::get('/create/post','AuthorController@create')->name('author.create.post');
     Route::post('/store/post','AuthorController@store')->name('author.store.post');
+    Route::get('/post/delete/{id}','AuthorController@delete')->name('author.post.delete');
+    Route::get('/post/edit/{id}','AuthorController@edit')->name('author.post.edit');
 });
 Route::prefix('user')->group(function(){
     Route::get('/dashboard','UserController@dashboard')->name('user.dashboard');
