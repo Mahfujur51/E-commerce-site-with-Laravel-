@@ -15,7 +15,7 @@ class AuthorController extends Controller
         $this->middleware('checkRole:author');
     }
     public function comment(){
-
+       return view('author.comment');
     }
     public function dashboard(){
         $posts=Post::Where('user_id',Auth::id())->pluck('id')->toArray();
@@ -62,4 +62,23 @@ class AuthorController extends Controller
          $posts=Post::Where('id',$id)->Where('user_id',Auth::id())->first();
          return view('author.update',compact('posts'));
     }
+    public function update(Request $request,$id){
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required'
+
+        ]);
+         $posts=Post::Where('id',$id)->Where('user_id',Auth::id())->first();
+         $posts->title=$request->title;
+         $posts->content=$request->content;
+         $posts->update();
+         Session::flash('success','Post updated Successfully');
+         return redirect()->route('author.post');
+
+    }
+   public function commentdelete($id){
+    $posts=Comment::Where('id',$id)->Where('user_id',Auth::id())->first();
+    $posts->delete();
+    Session::flash('success','Comment Deleted Successfully');
+   }
 }

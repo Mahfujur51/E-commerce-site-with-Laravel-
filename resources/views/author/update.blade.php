@@ -20,7 +20,7 @@
                 </div>
                 @endif
                 <div class="card-body">
-                    <form action="{{ route('author.store.post') }}" method="post">
+                    <form action="{{ route('author.post.update',$posts->id) }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Post Title:</label>

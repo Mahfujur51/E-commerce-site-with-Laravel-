@@ -42,7 +42,7 @@
         {{-- expr --}}
         <li class="nav-title">Admin</li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('admin.dashboard') }}" class="nav-link">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link {{Route::currentRouteName()=='admin.dashboard'?'active' : ''}}">
                 <i class="icon icon-speedometer"></i> Dashboard
             </a>
         </li>
