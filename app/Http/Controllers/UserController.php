@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Comment;
 use Auth;
 use Session;
+use Hash;
 
 class UserController extends Controller
 {
@@ -24,6 +25,23 @@ class UserController extends Controller
         $user =Auth::user();
         $user->name=$request->name;
         $user->email=$request->email;
+        if ($request->password!='') {
+            if (!(Hash::check($request->password,Auth::user()->password))) {
+                Session::flash('info','Current Password not mathc!!');
+                return redirect()->back();
+                # code...
+            }if (strcmp($request->password, $request->new_password)==0) {
+                Session::flash('info','You can not use old Password');
+                return redirect()->back();
+            }
+        }
+        if (strcmp($request->new_password, $request->confrim_password)!=0) {
+            Session::flash('info','New password And Confirm Password Not mathch!!');
+            return redirect()->back();
+        }else{
+            $user->password=bcrypt($request->new_password);
+        }
+
         $user->update();
         Session::flash('success','Profile Updated Successfully!!');
         return redirect()->back();

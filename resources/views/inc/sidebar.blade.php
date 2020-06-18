@@ -23,17 +23,17 @@
         {{-- expr --}}
         <li class="nav-title">Author</li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('author.dashboard') }}" class="nav-link">
+            <a href="{{ route('author.dashboard') }}" class="nav-link {{Route::currentRouteName()=='author.dashboard'?'active' : ''}}">
                 <i class="icon icon-speedometer"></i> Dashboard
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('author.post') }}" class="nav-link">
+            <a href="{{ route('author.post') }}" class="nav-link {{Route::currentRouteName()=='author.post'?'active' : ''}}">
                 <i class="icon icon-paper-clip"></i> Posts
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('author.comment') }}" class="nav-link">
+            <a href="{{ route('author.comment') }}" class="nav-link {{Route::currentRouteName()=='author.comment'?'active' : ''}}">
                 <i class="icon icon-umbrella"></i> Comment
             </a>
         </li>

@@ -2,7 +2,7 @@
 @section('title','Profile update')
 @section('content')
 <div class="card">
-    <div class="card-header">Accoutn Settings</div>
+    <div class="card-header bg-info">Accoutn Settings</div>
     <div class="container-fluid">
         <div class="row">
          <div class="col-md-12">
@@ -29,6 +29,30 @@
                         <div class="form-group">
                             <label for="">Email</label>
                             <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header bg-info">
+                    Password
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Current Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">New Password</label>
+                            <input type="password" name="new_password"  class="form-control">
+                        </div>
+                    </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Comforim password</label>
+                            <input type="password" name="confrim_password"  class="form-control">
                         </div>
                     </div>
                 </div>

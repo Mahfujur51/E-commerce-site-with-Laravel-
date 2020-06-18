@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use Auth;
+use Session;
 
 class AuthorController extends Controller
 {
@@ -28,7 +29,22 @@ class AuthorController extends Controller
     public function create(){
         return view('author.createpost');
     }
-    public function store(){
+    public function store(Request $request){
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required'
+
+        ]);
+
+        $user_id=Auth::id();
+        $post=new Post();
+        $post->title=$request->title;
+        $post->content=$request->content;
+        $post->user_id=$user_id;
+        $post->save();
+        Session::flash('success','Post Created Successfully!!');
+        return redirect()->back();
+
 
     }
 }
