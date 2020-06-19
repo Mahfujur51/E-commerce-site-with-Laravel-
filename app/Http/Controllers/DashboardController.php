@@ -21,10 +21,12 @@ class DashboardController extends Controller
         return view('admin.dashboard',compact('post','comment','user'));
     }
     public function comment(){
-        return view('admin.comment');
+        $comments=Comment::all();
+        return view('admin.comment',compact('comments'));
     }
     public function user(){
-        return view('admin.user');
+        $user=User::all();
+        return view('admin.user',compact('user'));
     }
     public function post(){
         $posts=Post::all();
@@ -51,5 +53,21 @@ class DashboardController extends Controller
         $posts->update();
         Session::flash('success','Post updated successfully!!');
         return redirect()->route('admin.post');
+    }
+    public function commentdelete($id){
+        $comments=Comment::find($id);
+        $comments->delete();
+        Session::flash('success','Comment Delete successfully');
+        return redirect()->back();
+
+    }
+    public function userdelete($id){
+        $user=User::find($id);
+        $user->delete();
+        Session::flash('success','User Deleted successfully');
+    }
+    public function useredit($id){
+        $user=User::find($id);
+        return view('admin.edituser',compact('user'));
     }
 }

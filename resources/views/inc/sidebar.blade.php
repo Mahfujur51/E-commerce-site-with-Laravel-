@@ -52,12 +52,12 @@
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('admin.comment') }}" class="nav-link">
+            <a href="{{ route('admin.comment') }}" class="nav-link {{Route::currentRouteName()=='admin.comment'?'active' : ''}} ">
                 <i class="icon icon-umbrella"></i> Comment
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('admin.user') }}" class="nav-link">
+            <a href="{{ route('admin.user') }}" class="nav-link {{Route::currentRouteName()=='admin.user'?'active' : ''}}">
                 <i class="icon icon-user"></i> User
             </a>
         </li>
