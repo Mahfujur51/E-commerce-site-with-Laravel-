@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/comment/deleted/{id}','DashboardController@commentdelete')->name('admin.comment.delete');
     Route::get('/user/delete/{id}','DashboardController@userdelete')->name('admin.user.delete');
     Route::get('/user/edit/{id}','DashboardController@useredit')->name('admin.user.edit');
+    Route::post('/user/update/{id}','DashboardController@roleupdate')->name('admin.user.update');
 });
 Route::prefix('author')->group(function(){
     Route::get('/dashboard','AuthorController@dashboard')->name('author.dashboard');

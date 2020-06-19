@@ -7,7 +7,7 @@
             Edit User
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('admin.user.update',$user->id) }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="">User Name</label>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">User Email</label>
-                    <input type="text" name="name" value="{{$user->email}}" class="form-control">
+                    <input type="email" name="email" value="{{$user->email}}" class="form-control">
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio"  id="exampleRadios1"  name="admin" value="1" {{$user->admin == 1 ? 'checked' : ''}}>

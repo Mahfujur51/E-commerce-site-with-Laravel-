@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Comments')
+@section('title','User List')
 @section('content')
 <div class="col-md-12">
     <div class="card">

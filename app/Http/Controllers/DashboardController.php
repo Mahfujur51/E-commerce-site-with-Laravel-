@@ -13,6 +13,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('checkRole:admin');
+        $this->middleware('auth');
     }
     public function dashboard(){
         $post=Post::all()->count();
@@ -65,9 +66,28 @@ class DashboardController extends Controller
         $user=User::find($id);
         $user->delete();
         Session::flash('success','User Deleted successfully');
+        return redirect()->back();
     }
     public function useredit($id){
         $user=User::find($id);
         return view('admin.edituser',compact('user'));
+    }
+    public function roleupdate(Request $request,$id){
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required'
+        ]);
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        if ($request->author==1) {
+            $user->author=true;
+
+        }elseif ($request->admin==1) {
+            $user->admin=true;
+        }
+        $user->update();
+        Session::flash('success','User role Updated!!');
+        return redirect()->back();
     }
 }
