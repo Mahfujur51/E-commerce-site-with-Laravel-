@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Comment;
+use Session;
 
 class DashboardController extends Controller
 {
@@ -26,6 +27,29 @@ class DashboardController extends Controller
         return view('admin.user');
     }
     public function post(){
-        return view('admin.post');
+        $posts=Post::all();
+        return view('admin.post',compact('posts'));
+    }
+    public function delete($id){
+        $posts=Post::find($id);
+        $posts->delete();
+        Session::flash('success','Post Delete successfully!!');
+        return redirect()->back();
+    }
+    public function edit($id){
+        $posts=Post::find($id);
+        return view('admin.editpost',compact('posts'));
+    }
+    public function update(Request $request,$id){
+        $this->validate($request,[
+            'title'=>'required',
+            'content'=>'required'
+        ]);
+        $posts=Post::find($id);
+        $posts->title=$request->title;
+        $posts->content=$request->content;
+        $posts->update();
+        Session::flash('success','Post updated successfully!!');
+        return redirect()->route('admin.post');
     }
 }

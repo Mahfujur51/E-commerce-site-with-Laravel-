@@ -47,7 +47,7 @@
             </a>
         </li>
         <li class="nav-item  nav-dropdown">
-            <a href="{{ route('admin.post') }}" class="nav-link">
+            <a href="{{ route('admin.post') }}" class="nav-link {{Route::currentRouteName()=='admin.post'?'active' : ''}}">
                 <i class="icon icon-paper-clip"></i> Posts
             </a>
         </li>
