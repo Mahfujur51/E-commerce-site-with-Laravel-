@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PublicController@index')->name('index');
 Route::get('/contact','PublicController@contact')->name('contact');
 Route::get('/about','PublicController@about')->name('about');
+Route::post('/comment','PublicController@comment')->name('comment');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');
 Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');

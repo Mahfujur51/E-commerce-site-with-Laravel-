@@ -39,7 +39,7 @@
         @if (Auth::check())
         <div class="row">
             <div class="col-md-12">
-                    <form action="" method="post">
+                    <form action="{{ route('comment') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Your Comment</label>
