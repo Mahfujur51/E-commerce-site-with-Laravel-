@@ -14,6 +14,7 @@ Route::get('/','PublicController@index')->name('index');
 Route::get('/contact','PublicController@contact')->name('contact');
 Route::get('/about','PublicController@about')->name('about');
 Route::get('/single/Product/{id}','PublicController@singleProduct')->name('single.product');
+Route::get('/single/product/oder/{id}','PublicController@oderProduct')->name('single.product.order');
 Route::post('/comment','PublicController@comment')->name('comment');
 Route::get('/shop','PublicController@shop')->name('shop');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');

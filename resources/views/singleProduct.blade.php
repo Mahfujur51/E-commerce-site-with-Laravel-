@@ -45,10 +45,10 @@
               </div>
               <div class="card-block mt-3">
                 <div class="text-center">
-                    <button class="btn btn-info">
+                    <a href="{{ route('single.product.order',$product->id) }}" class="btn btn-info">
                         Cheek Our Paypal
 
-                    </button>
+                    </a>
                 </div>
 
               </div>
