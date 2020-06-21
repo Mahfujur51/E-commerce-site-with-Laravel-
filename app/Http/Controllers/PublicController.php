@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailPurchase;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Product;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -168,26 +170,27 @@ public function executeoder($id){
         // (See bootstrap.php for more on `ApiContext`)
             $result = $payment->execute($execution, $apiContext);
 
+
         // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
             print("Executed Payment 1". $payment->getId()."Result:". $result);
 
             try {
                 $payment = Payment::get($paymentId, $apiContext);
+                $paymentInfo=json_decode($payment);
+                Mail::to($paymentInfo->payer->payer_info->email)
+                ->bcc('sale1@blogtest.com')
+                ->send(new SendMailPurchase($paymentInfo));
+
             } catch (\Exception $ex) {
-            // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-              print("Get Payment 1");
-                exit(1);
+            return redirect()->route('shop');
             }
         } catch (\Exception $ex) {
         // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-          print("Executed Payment 2");
-            exit(1);
+         return redirect()->route('shop');
         }
 
     // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-      print("Get Payment 2".$payment->getId());
-
-        return $payment;
+       return redirect()->route('shop');
     }
 
 
