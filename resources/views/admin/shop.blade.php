@@ -23,29 +23,53 @@
                     </thead>
                     <tbody>
                         @if ($product->count()>0)
-                            {{-- expr --}}
+
+                        @foreach ($product as $key=>$products)
 
                         <tr>
-                            <td>1</td>
-                            <td>Demo</td>
-                            <td>Demo</td>
-                            <td>Demo</td>
+                            <td>{{$key+1}}</td>
+                            <td>{{$products->title}}</td>
                             <td>
-                                <a href="" class="btn btn-success">Edit</a>
-                                <button class="btn btn-danger">Delete</button>
+                                <img src="{{asset($products->image)}}" alt="Image" height="100" width="100">
+                            </td>
+                            <td>{{$products->price}}</td>
+                            <td>
+                                <a href="{{ route('product.edit',$products->id) }}" class="btn btn-success">Edit</a>
+                                <button   data-toggle="modal" data-target="#exampleModal-{{$products->id}}" class="btn btn-danger">Delete</button>
                             </td>
                         </tr>
+                        @endforeach
                         @else
                         <tr>
                             <td colspan="5" class="text-center">No Product Available!!</td>
                         </tr>
                         @endif
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal -->
+@foreach ($product as $products)
+    {{-- expr --}}
 
+<div class="modal fade" id="exampleModal-{{$products->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{$products->title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="{{ route('product.delete',$products->id) }}" type="button" class="btn btn-danger">Are you sure to delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

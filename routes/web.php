@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/shop','DashboardController@shop')->name('admin.shop');
     Route::get('/product/create','DashboardController@createproduct')->name('admin.product.create');
     Route::post('/product/store','DashboardController@productstore')->name('admin.product.store');
+    Route::post('/product/update/{id}','DashboardController@productupdate')->name('admin.product.update');
+    Route::get('/product/delete/{id}','DashboardController@productdelete')->name('product.delete');
+     Route::get('/product/edit/{id}','DashboardController@productedit')->name('product.edit');
 });
 Route::prefix('author')->group(function(){
     Route::get('/dashboard','AuthorController@dashboard')->name('author.dashboard');

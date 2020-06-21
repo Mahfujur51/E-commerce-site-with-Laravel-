@@ -116,5 +116,37 @@ class DashboardController extends Controller
         Session::flash('success','Product added successfully!!');
         return redirect()->back();
     }
+    public function productdelete($id){
+        $product=Product::find($id);
+        $product->delete();
+        Session::flash('success','Product Delete successfully');
+        return redirect()->back();
+    }
+    public function productedit($id){
+        $products=Product::find($id);
+        return view('admin.editproduct',compact('products'));
+    }
+    public function productupdate(Request $request,$id){
+      $this->validate($request,[
+        'title'=>'required',
+        'price'=>'required',
+        'description'=>'required'
+    ]);
+      $product=Product::find($id);
+      $product->title=$request->title;
+      $product->price=$request->price;
+      $product->description=$request->description;
+      $image=$request->file('image');
+      if ($image) {
+       $image_name=time().$image->getClientOriginalName();
+       $image->move('productimage',$image_name);
+       $product->image='productimage/'.$image_name;
+   }
+
+   $product->update();
+   Session::flash('success','Product Updated successfully!!');
+   return redirect()->route('admin.shop');
+
+}
 
 }
