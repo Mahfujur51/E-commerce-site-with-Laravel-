@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Product;
 use Auth;
 
 class PublicController extends Controller
@@ -39,7 +40,12 @@ class PublicController extends Controller
         return view('post',compact('post'));
     }
     public function shop(){
-        return view('shop');
+        $product=Product::all();
+        return view('shop',compact('product'));
+    }
+    public function singleProduct ($id){
+        $product=Product::find($id);
+     return view('singleProduct',compact('product'));
     }
 
 }

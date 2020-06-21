@@ -17,42 +17,23 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
+        @foreach ($product as $products)
+
         <div class="col-md-4">
             <div class="card">
-              <img class="card-img-top" src="{{asset('productimage/1.jpg')}}" alt="Card image cap">
+              <img class="card-img-top" src="{{asset($products->image)}}" alt="Card image cap" height="300" width="300">
               <div class="card-body">
-                <h5 class="card-header text-center">Black T-shirt</h5>
+                <h5 class="card-header text-center">{{$products->title}}</h5>
+                <h3 class="text-center">Price: {{$products->price}} $</h3>
 
                 <div class="text-center mt-3">
-                    <a href="" class="btn btn-primary" >View Details</a>
+                    <a href="{{ route('single.product',$products->id) }}" class="btn btn-primary" >View Details</a>
                 </div>
             </div>
         </div>
     </div>
-      <div class="col-md-4">
-            <div class="card">
-              <img class="card-img-top" src="{{asset('productimage/1.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-header text-center">Black T-shirt</h5>
+     @endforeach
 
-                <div class="text-center mt-3">
-                    <a href="" class="btn btn-primary" >View Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-      <div class="col-md-4">
-            <div class="card">
-              <img class="card-img-top" src="{{asset('productimage/1.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-header text-center">Black T-shirt</h5>
-
-                <div class="text-center mt-3">
-                    <a href="" class="btn btn-primary" >View Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </div>
 <hr>

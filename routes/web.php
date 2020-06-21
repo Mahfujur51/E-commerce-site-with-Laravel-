@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PublicController@index')->name('index');
 Route::get('/contact','PublicController@contact')->name('contact');
 Route::get('/about','PublicController@about')->name('about');
+Route::get('/single/Product/{id}','PublicController@singleProduct')->name('single.product');
 Route::post('/comment','PublicController@comment')->name('comment');
 Route::get('/shop','PublicController@shop')->name('shop');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');
@@ -35,7 +36,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/product/store','DashboardController@productstore')->name('admin.product.store');
     Route::post('/product/update/{id}','DashboardController@productupdate')->name('admin.product.update');
     Route::get('/product/delete/{id}','DashboardController@productdelete')->name('product.delete');
-     Route::get('/product/edit/{id}','DashboardController@productedit')->name('product.edit');
+    Route::get('/product/edit/{id}','DashboardController@productedit')->name('product.edit');
 });
 Route::prefix('author')->group(function(){
     Route::get('/dashboard','AuthorController@dashboard')->name('author.dashboard');
@@ -45,13 +46,13 @@ Route::prefix('author')->group(function(){
     Route::post('/store/post','AuthorController@store')->name('author.store.post');
     Route::get('/post/delete/{id}','AuthorController@delete')->name('author.post.delete');
     Route::get('/post/edit/{id}','AuthorController@edit')->name('author.post.edit');
-     Route::get('/comment/delete/{id}','AuthorController@commentdelete')->name('author.comment.delete');
+    Route::get('/comment/delete/{id}','AuthorController@commentdelete')->name('author.comment.delete');
     Route::post('/post/update/{id}','AuthorController@update')->name('author.post.update');
 });
 Route::prefix('user')->group(function(){
     Route::get('/dashboard','UserController@dashboard')->name('user.dashboard');
     Route::get('/comment','UserController@comment')->name('user.comment');
-     Route::get('/profile','UserController@profile')->name('user.profile');
-     Route::post('/profile/update','UserController@update')->name('user.profile.update');
-     Route::get('/comment/delete/{id}','UserController@delete')->name('user.comment.delete');
+    Route::get('/profile','UserController@profile')->name('user.profile');
+    Route::post('/profile/update','UserController@update')->name('user.profile.update');
+    Route::get('/comment/delete/{id}','UserController@delete')->name('user.comment.delete');
 });
