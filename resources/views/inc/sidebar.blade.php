@@ -61,6 +61,11 @@
                 <i class="icon icon-user"></i> User
             </a>
         </li>
+        <li class="nav-item  nav-dropdown">
+            <a href="{{ route('admin.shop') }}" class="nav-link {{Route::currentRouteName()=='admin.shop'?'active' : ''}}">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shop
+            </a>
+        </li>
         @endif
     </ul>
 </nav>

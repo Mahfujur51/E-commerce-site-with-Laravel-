@@ -14,6 +14,7 @@ Route::get('/','PublicController@index')->name('index');
 Route::get('/contact','PublicController@contact')->name('contact');
 Route::get('/about','PublicController@about')->name('about');
 Route::post('/comment','PublicController@comment')->name('comment');
+Route::get('/shop','PublicController@shop')->name('shop');
 Route::get('/post/{id}','PublicController@singlePost')->name('post');
 Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
@@ -29,6 +30,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/user/delete/{id}','DashboardController@userdelete')->name('admin.user.delete');
     Route::get('/user/edit/{id}','DashboardController@useredit')->name('admin.user.edit');
     Route::post('/user/update/{id}','DashboardController@roleupdate')->name('admin.user.update');
+    Route::get('/shop','DashboardController@shop')->name('admin.shop');
+    Route::get('/product/create','DashboardController@createproduct')->name('admin.product.create');
+    Route::post('/product/store','DashboardController@productstore')->name('admin.product.store');
 });
 Route::prefix('author')->group(function(){
     Route::get('/dashboard','AuthorController@dashboard')->name('author.dashboard');

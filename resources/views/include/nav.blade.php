@@ -34,6 +34,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('shop') }}" class="nav-link">Shop</a>
+
+                        </li>
 
 
                         @if (Auth::check())

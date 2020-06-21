@@ -7,6 +7,7 @@ use App\User;
 use App\Post;
 use App\Comment;
 use Session;
+use App\Product;
 
 class DashboardController extends Controller
 {
@@ -90,4 +91,30 @@ class DashboardController extends Controller
         Session::flash('success','User role Updated!!');
         return redirect()->back();
     }
+    public function shop(){
+        $product=Product::all();
+        return view('admin.shop',compact('product'));
+    }
+    public function createproduct(){
+        return view('admin.createproduct');
+    }
+    public function productstore(Request $request){
+        $this->validate($request,[
+            'title'=>'required',
+            'price'=>'required',
+            'description'=>'required'
+        ]);
+        $product=new Product;
+        $product->title=$request->title;
+        $product->price=$request->price;
+        $product->description=$request->description;
+        $image=$request->file('image');
+        $image_name=time().$image->getClientOriginalName();
+        $image->move('productimage',$image_name);
+        $product->image='productimage/'.$image_name;
+        $product->save();
+        Session::flash('success','Product added successfully!!');
+        return redirect()->back();
+    }
+
 }
